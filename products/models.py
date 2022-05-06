@@ -37,16 +37,15 @@ class Product(models.Model):
 
 
 class Photo(models.Model):
-    file_path = models.ImageField(upload_to='uploads/')
-    products = models.ForeignKey(Product, null=True, blank=True, on_delete=models.CASCADE, related_name='photos')
+    photo = models.ImageField(upload_to='uploads/')
+    product = models.ForeignKey(Product, null=True, blank=True, on_delete=models.CASCADE, related_name='photo')
 
     def image_tag(self):
-        if self.file_path != '':
-            return mark_safe('<img src="%s%s" width="150" />' % (f'{settings.MEDIA_URL}', self.file_path))
+        if self.photo != '':
+            return mark_safe('<img src="%s%s" width="150" />' % (f'{settings.MEDIA_URL}', self.photo))
     image_tag.short_description = 'Photo'
     image_tag.allow_tags = True
 
-    # image_tag.short_description = 'Image'
     # def __str__(self):  # __unicode__ on Python 2
     #     return self.photo_title
 
