@@ -1,6 +1,6 @@
 from rest_framework import generics
-from .models import Product, Photo, Category
-from .serializers import ProductSerializer, PhotoSerializer, CategorySerializer
+from .models import Product, Photo, Category, Order as OrderModel, OrderProduct as OrderProductModel
+from .serializers import ProductSerializer, PhotoSerializer, CategorySerializer, OrderSerializer
 
 
 class ProductList(generics.ListCreateAPIView):
@@ -26,3 +26,7 @@ class PhotoDetail(generics.RetrieveUpdateDestroyAPIView):
 class CategoryDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
+
+class OrderList(generics.ListCreateAPIView):
+    queryset = OrderModel.objects.all()
+    serializer_class = OrderSerializer

@@ -1,6 +1,7 @@
 from django.contrib import admin
 from.models import Product, Category, Photo
 
+
 class PhotoAdmin(admin.StackedInline):
     model = Photo
     readonly_fields = ['image_tag']
